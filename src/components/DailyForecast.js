@@ -38,8 +38,8 @@ const Forecast = ({ city }) => {
 			<h2 className="text-xl font-bold text-center mb-4">DAILY FORECAST</h2>
 			<div className="divide-y divide-gray-600">
 				{limitedForecastList.map((item, index) => (
-					<div key={index} className="grid grid-cols-3 py-2 items-center">
-						<p className="text-sm col-span-1">
+					<div key={index} className="grid grid-cols-4 py-2 items-center">
+						<p className="text-sm md:text-md col-span-1">
 							{new Date(item.dt_txt).toLocaleTimeString([], {
 								hour: "2-digit",
 								minute: "2-digit",
@@ -51,10 +51,13 @@ const Forecast = ({ city }) => {
 								alt={item.weather[0].main}
 								className="w-8 h-8"
 							/>
-							<span className="ml-2">{item.weather[0].main}</span>
+							<span className="ml-2 text-xs">{item.weather[0].main}</span>
 						</div>
-						<p className="text-lg font-semibold text-right col-span-1">
+						<p className="text-xs md:text-md md:font-semibold text-right col-span-1">
 							{Math.round(item.main.temp)}°C
+						</p>
+						<p className="text-xs md:text-md md:font-semibold text-right col-span-1">
+							Rain {forecastData.list[0].pop}%
 						</p>
 					</div>
 				))}
